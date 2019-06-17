@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Cube from './components/Cube';
 import CubeContainer from './containers/CubeContainer';
+import ScreenBoxContainer from './containers/ScreenBoxContaienr';
 
 function App() {
 	return (
 		<div className='App'>
 			<CubeContainer />
+			<ScreenBoxContainer />
 		</div>
 	);
 }

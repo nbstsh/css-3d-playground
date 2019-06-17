@@ -1,0 +1,26 @@
+@import '../styles/mixins';
+
+.container {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	background-image: linear-gradient(
+		to right top,
+		#040e1c,
+		#001231,
+		#001445,
+		#001258,
+		#000868
+	);
+	@include flexCenter;
+	flex-wrap: wrap;
+}
+
+.title {
+	position: absolute;
+	z-index: 100;
+	top: 2rem;
+	left: 2rem;
+	font-size: 2rem;
+	color: #fff;
+}

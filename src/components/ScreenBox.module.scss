@@ -1,0 +1,137 @@
+@import '../styles/mixins';
+
+$depth: 30rem;
+
+.cube {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	transform-origin: center center calc(depth / -2);
+	// animation: rotate 3s infinite;
+	// animation: scaleDown 1s forwards, rotate 1s forwards 1s,
+	// 	scaleUp 1s forwards 2s;
+	// animation: scaleDown 1s forwards, changeScreen 1s linear forwards 1s;
+
+	transform-style: preserve-3d;
+	& * {
+		transform-style: inherit;
+	}
+}
+
+.button {
+	width: 30vw;
+	font-size: 3rem;
+	padding: 2rem;
+	color: gray;
+	border: none;
+	cursor: pointer;
+	margin: 10vw;
+}
+
+.animate {
+	animation: scaleDown 1s forwards, rotate 1s forwards 1s,
+		scaleUp 1s forwards 2s;
+}
+
+.face {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(#66ffcc, 0.7);
+
+	&:nth-of-type(1) {
+		background-image: linear-gradient(
+			to right top,
+			#051937,
+			#004d7a,
+			#008793,
+			#00bf72,
+			#a8eb12
+		);
+	}
+	&:nth-of-type(2) {
+		height: $depth;
+		transform-origin: top;
+		transform: rotateX(-90deg);
+	}
+	&:nth-of-type(3) {
+		width: $depth;
+		right: 0;
+		transform-origin: right;
+		transform: rotateY(-90deg);
+	}
+	&:nth-of-type(4) {
+		height: $depth;
+		bottom: 0;
+		transform-origin: bottom;
+		transform: rotateX(90deg);
+	}
+	&:nth-of-type(5) {
+		width: $depth;
+		transform-origin: left;
+		transform: rotateY(90deg);
+	}
+	&:nth-of-type(6) {
+		background-image: linear-gradient(
+			to right top,
+			#051937,
+			#34265b,
+			#702872,
+			#b11c76,
+			#eb1266
+		);
+		transform: translateZ(-1 * $depth) rotateY(180deg);
+	}
+}
+
+.dummy {
+	padding: 10vw;
+	color: #fff;
+
+	& > h1 {
+		font-size: 5rem;
+	}
+
+	& > p {
+		font-size: 2rem;
+	}
+}
+
+@keyframes scaleDown {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0.5);
+	}
+}
+
+@keyframes rotate {
+	from {
+		transform: rotateX(0) scale(0.5);
+	}
+	to {
+		transform: rotateX(180deg) rotateZ(180deg) scale(0.5);
+	}
+}
+
+@keyframes scaleUp {
+	from {
+		transform: rotateX(180deg) rotateZ(180deg) scale(0.5);
+	}
+	to {
+		transform: rotateX(180deg) rotateZ(180deg) scale(1);
+	}
+}
+
+@keyframes changeScreen {
+	0% {
+		transform: rotateX(0) rotateZ(0) scale(0.8);
+	}
+	50% {
+		transform: rotateY(90deg) scale(0.8);
+	}
+	100% {
+		transform: rotateY(180deg) scale(0.8);
+	}
+}
